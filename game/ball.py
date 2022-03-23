@@ -1,7 +1,7 @@
 import pygame
 
 
-WIDTH, HEIGHT = 900, 500 # add constants
+WIDTH, HEIGHT = 900, 500 # add constants for update -------------
 
 class Ball:
     def __init__(self, screen, color, posX, posY, radius):
