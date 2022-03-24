@@ -1,5 +1,4 @@
 # PONG GAME
----
 ## View
 The Pong game written using the principles of OOP and Turtle module.
 
