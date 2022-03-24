@@ -22,6 +22,4 @@ pygame 1.9.3 (To install pygame run this in terminal/command prompt $ pip instal
 
 * Elizeu Silva: fer21029@byui.edu
 * Alexander Karasik: kar21020@byui.edu
-* Shawn Yang: yangshawn14@byui.edu
 * Brenner Mann: man19032@byui.edu
-* Josifini Tamanalevu : josifini1234@gmail.com
