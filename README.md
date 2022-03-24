@@ -1,5 +1,5 @@
 # PONG GAME
-## View
+## [View]
 The Pong game written using the principles of OOP and pygame
 
 KEYS TO RIGHT PADDLE:
