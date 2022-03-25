@@ -1,23 +1,24 @@
-import pygame
+import pygame, sys
 from paddle import Paddle
 from ball import Ball
 from collisionManager import CollisionManager
 from scoreboard import PlayerScore
 
-
 WIDTH, HEIGHT = 900, 500 # add constants within of a new file
-BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
 # SCREEN
 pygame.init()
 screen = pygame.display.set_mode( (WIDTH, HEIGHT) )
+screen.fill( BLUE )
+pygame.draw.line (screen, WHITE, (WIDTH//2, 0), (WIDTH//2, HEIGHT), 5 )
 pygame.display.set_caption('PONG GAME')
 
 
 def draw_board():
-    screen.fill( BLACK )
+    screen.fill( BLUE )
     pygame.draw.line( screen, WHITE, (WIDTH//2, 0), (WIDTH//2, HEIGHT), 5 )
 
 def restart():
