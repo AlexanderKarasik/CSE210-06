@@ -1,6 +1,3 @@
-<<<<<<< HEAD:game/main.py
-
-=======
 import pygame
 from paddle import Paddle
 from ball import Ball
@@ -137,4 +134,3 @@ while True:
 
 	clock.tick(40)
 	pygame.display.update()
->>>>>>> c3a6dd13c088a64f1c66a93edd92aa976a63eb68:main.py
