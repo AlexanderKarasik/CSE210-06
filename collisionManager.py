@@ -1,4 +1,4 @@
-<<<<<<< HEAD:game/collisionManager.py
+
 
 WIDTH, HEIGHT = 900, 500 # new chanced 
 class CollisionManager:
@@ -108,5 +108,4 @@ class CollisionManager:
         return ball.posX + ball.radius <= 0
 
     def between_ball_and_goal2(self, ball):
->>>>>>> c3a6dd13c088a64f1c66a93edd92aa976a63eb68:collisionManager.py
         return ball.posX - ball.radius >= WIDTH
