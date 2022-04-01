@@ -1,7 +1,6 @@
-WIDTH, HEIGHT = 900, 500 # add constants for update 
-
+from constants import *
 class CollisionManager:
-    def between_ball_and_paddle1(self, ball, paddle):
+    def _between_ball_and_paddle1(self, ball, paddle):
         ballX = ball.posX
         ballY = ball.posY
         paddleX = paddle.posX
@@ -17,7 +16,7 @@ class CollisionManager:
 		# no collision
         return False
 
-    def between_ball_and_paddle2(self, ball, paddle):
+    def _between_ball_and_paddle2(self, ball, paddle):
         ballX = ball.posX
         ballY = ball.posY
         paddleX = paddle.posX
@@ -33,7 +32,7 @@ class CollisionManager:
 		# no collision
         return False
 
-    def between_ball_and_walls(self, ball):
+    def _between_ball_and_walls(self, ball):
         ballY = ball.posY
 
 		# top collision
@@ -47,10 +46,10 @@ class CollisionManager:
 		# no collision
         return False
 
-    def between_ball_and_goal1(self, ball):
+    def _between_ball_and_goal1(self, ball):
         return ball.posX + ball.radius <= 0
 
-    def between_ball_and_goal2(self, ball):
+    def _between_ball_and_goal2(self, ball):
 
         return ball.posX - ball.radius >= WIDTH
 
