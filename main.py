@@ -3,39 +3,35 @@ from paddle import Paddle
 from ball import Ball
 from collisionManager import CollisionManager
 from scoreboard import PlayerScore
-
-WIDTH, HEIGHT = 900, 500 # add constants within of a new file
-BLUE = (0, 0, 255)
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
+from constants import *
 
 # SCREEN
 pygame.init()
 screen = pygame.display.set_mode( (WIDTH, HEIGHT) )
-screen.fill( BLUE )
+screen.fill(BLUE)
 pygame.draw.line (screen, WHITE, (WIDTH//2, 0), (WIDTH//2, HEIGHT), 5 )
 pygame.display.set_caption('PONG GAME')
 
 
-def draw_board():
+def _draw_board():
     screen.fill( BLUE )
     pygame.draw.line( screen, WHITE, (WIDTH//2, 0), (WIDTH//2, HEIGHT), 5 )
 
-def restart():
-	draw_board()
+def _restart():
+	_draw_board()
 	score1.restart()
 	score2.restart()
-	ball.restart_pos()
-	paddle1.restart_pos()
-	paddle2.restart_pos()
+	ball._restart_pos()
+	paddle1._restart_pos()
+	paddle2._restart_pos()
 
 
 # -------
 # OBJECTS
 # -------
 
-paddle1 = Paddle( screen, WHITE, 15, HEIGHT//2 - 60, 20, 120 )
-paddle2 = Paddle( screen, WHITE, WIDTH - 20 - 15, HEIGHT//2 - 60, 20, 120 )
+paddle1 = Paddle( screen, RED, 15, HEIGHT//2 - 60, PADDLE_WIDTH, PADDLE_HEIGHT )
+paddle2 = Paddle( screen, RED, WIDTH - 20 - 15, HEIGHT//2 - 60, PADDLE_WIDTH, PADDLE_HEIGHT )
 ball = Ball( screen, WHITE, WIDTH//2, HEIGHT//2, 12 )
 collision = CollisionManager()
 score1 = PlayerScore( screen, '0', WIDTH//4, 15 )
@@ -56,12 +52,18 @@ while True:
 			sys.exit()
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_p and not playing:
-				ball.start()
+			if event.key == pygame.K_RETURN and not playing:
+				ball._start()
+				playing = True
+
+			if event.key == pygame.K_SPACE and playing:
+				playing = False
+
+			if event.key == pygame.K_SPACE and not playing:
 				playing = True
 
 			if event.key == pygame.K_r and playing:
-				restart()
+				_restart()
 				playing = False
 
 			if event.key == pygame.K_w:
@@ -81,57 +83,63 @@ while True:
 			paddle2.state = 'stopped'
 
 	if playing:
-		draw_board()
+		_draw_board()
 
 		# ball
-		ball.move()
-		ball.draw()
+		ball._move()
+		ball._draw()
 
 		# paddle 1
-		paddle1.move()
-		paddle1.clamp()
-		paddle1.draw()
+		paddle1._move()
+		paddle1._clamp()
+		paddle1._draw()
 
 		# paddle 2
-		paddle2.move()
-		paddle2.clamp()
-		paddle2.draw()
+		paddle2._move()
+		paddle2._clamp()
+		paddle2._draw()
 
 		# wall collision
-		if collision.between_ball_and_walls(ball):
+		if collision._between_ball_and_walls(ball):
 			print('WALL COLLISION')
-			ball.wall_collision()
+			ball._wall_collision()
 
 		# paddle1 collision
-		if collision.between_ball_and_paddle1(ball, paddle1):
+		if collision._between_ball_and_paddle1(ball, paddle1):
 			print('COLLISION WITH PADDLE 1')
-			ball.paddle_collision()
+			ball._paddle_collision()
 
 		# paddle2 collision
-		if collision.between_ball_and_paddle2(ball, paddle2):
+		if collision._between_ball_and_paddle2(ball, paddle2):
 			print('COLLISION WITH PADDLE 2')
-			ball.paddle_collision()
+			ball._paddle_collision()
 
 		# GOAL OF PLAYER 1 !
-		if collision.between_ball_and_goal2(ball):
-			draw_board()
+		if collision._between_ball_and_goal2(ball):
+			_draw_board()
 			score1.increase()
-			ball.restart_pos()
-			paddle1.restart_pos()
-			paddle2.restart_pos()
+			ball._restart_pos()
+			paddle1._restart_pos()
+			paddle2._restart_pos()
 			playing = False
 
 		# GOAL OF PLAYER 2!
-		if collision.between_ball_and_goal1(ball):
-			draw_board()
+		if collision._between_ball_and_goal1(ball):
+			_draw_board()
 			score2.increase()
-			ball.restart_pos()
-			paddle1.restart_pos()
-			paddle2.restart_pos()
+			ball._restart_pos()
+			paddle1._restart_pos()
+			paddle2._restart_pos()
 			playing = False
 
 	score1.show()
 	score2.show()
+	if score1.points == 3:
+		score1.points == "You won!"
+		score1.show()
+		score2.show()
+		playing = False
 
 	clock.tick(40)
 	pygame.display.update()
+
