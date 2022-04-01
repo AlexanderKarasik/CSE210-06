@@ -1,7 +1,8 @@
 import pygame
 from constants import *
+from actor import Actor
 
-class Ball:
+class Ball (Actor):
     def __init__(self, screen, color, posX, posY, radius):
         self.screen = screen
         self.color = color
