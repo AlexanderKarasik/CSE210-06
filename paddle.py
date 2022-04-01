@@ -1,6 +1,5 @@
 import pygame
-
-WIDTH, HEIGHT = 900, 500 # add constants newn files
+from constants import *
 
 
 class Paddle:
@@ -12,13 +11,13 @@ class Paddle:
         self.width = width
         self.height = height
         self.state = 'stopped'
-        self.draw()
+        self._draw()
 
-    def draw(self):
+    def _draw(self):
         pygame.draw.rect( self.screen, self.color, (self.posX, self.posY, self.width, self.height) )
 
 
-    def move(self):
+    def _move(self):
 		# moving up
         if self.state == 'up':
             self.posY -= 10
@@ -27,14 +26,14 @@ class Paddle:
         elif self.state == 'down':
              self.posY += 10
 
-    def clamp(self):
+    def _clamp(self):
         if self.posY <= 0:
            self.posY = 0
 
         if self.posY + self.height >= HEIGHT:
             self.posY = HEIGHT - self.height
 
-    def restart_pos(self):
+    def _restart_pos(self):
         self.posY = HEIGHT//2 - self.height//2
         self.state = 'stopped'
-        self.draw()
+        self._draw()
