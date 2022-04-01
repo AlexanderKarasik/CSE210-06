@@ -1,8 +1,5 @@
 import pygame
-
-# add constants within of a new file
-WIDTH, HEIGHT = 900, 500
-WHITE = (255, 255, 255)
+from constants import *
 
 class PlayerScore:
     def __init__(self, screen, points, posX, posY):
