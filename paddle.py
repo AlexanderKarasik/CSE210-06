@@ -1,8 +1,9 @@
 import pygame
 from constants import *
+from actor import Actor
 
 
-class Paddle:
+class Paddle (Actor):
     def __init__(self, screen, color, posX, posY, width, height):
         self.screen = screen
         self.color = color
@@ -37,3 +38,4 @@ class Paddle:
         self.posY = HEIGHT//2 - self.height//2
         self.state = 'stopped'
         self._draw()
+
