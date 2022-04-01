@@ -10,7 +10,7 @@ KEYS TO LEFT PADDLE:
 
 UP: "w"
 DOWN: "S"
-Rules: the game starts when either of the playes press any button. Each player move their paddle to beat the ball on the side of opponent. If 
+Rules: the game starts when either of the playes press "Enter" button. Each player move their paddle to beat the ball on the side of opponent. If 
 a player looses a ball (or does not hit it back with a paddle) he looses point. When one of the players has lost all his points the game is over. 
 
 ## Required Technologies
