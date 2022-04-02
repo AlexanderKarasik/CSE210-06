@@ -4,6 +4,7 @@ from actor import Actor
 
 
 class Paddle (Actor):
+    """Solid thing to hit the ball"""
     def __init__(self, screen, color, posX, posY, width, height):
         self.screen = screen
         self.color = color
@@ -15,6 +16,7 @@ class Paddle (Actor):
         self._draw()
 
     def _draw(self):
+        """Method to draw a paddle"""
         pygame.draw.rect( self.screen, self.color, (self.posX, self.posY, self.width, self.height) )
 
 
@@ -35,6 +37,7 @@ class Paddle (Actor):
             self.posY = HEIGHT - self.height
 
     def _restart_pos(self):
+	"""Restarts paddle to default position"""
         self.posY = HEIGHT//2 - self.height//2
         self.state = 'stopped'
         self._draw()
