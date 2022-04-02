@@ -1,5 +1,6 @@
 from constants import *
 class CollisionManager:
+    """Regulates collision of the ball with paddle and wall"""
     def _between_ball_and_paddle1(self, ball, paddle):
         ballX = ball.posX
         ballY = ball.posY
