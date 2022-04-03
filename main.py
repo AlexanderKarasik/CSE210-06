@@ -1,9 +1,11 @@
+# MODULE IMPORTS
 import pygame, sys
 from paddle import Paddle
 from ball import Ball
 from collisionManager import CollisionManager
 from scoreboard import PlayerScore
 from constants import *
+from sounds import Sounds
 
 # SCREEN
 pygame.init()
@@ -36,6 +38,26 @@ ball = Ball( screen, WHITE, WIDTH//2, HEIGHT//2, 12 )
 collision = CollisionManager()
 score1 = PlayerScore( screen, '0', WIDTH//4, 15 )
 score2 = PlayerScore( screen, '0', WIDTH - WIDTH//4, 15 )
+sounds=Sounds()
+
+# -------
+# MUSIC & SOUND
+# -------
+# Code that initializes the mixer module.
+pygame.mixer.init()
+
+# Code that loads all sounds into memory.
+sounds.store_sounds()
+
+# Code that starts the music.
+sounds.play_music()
+
+# Code that will print off the music documentation.
+# In the United States, these must be included in the code.
+sounds.print_documentation()
+
+# TODO there is no code that will stop the music when the game ends.
+# The music will still stop if someone closes the window.  
 
 # ---------
 # VARIABLES
@@ -108,16 +130,19 @@ while True:
 		if collision._between_ball_and_paddle1(ball, paddle1):
 			print('COLLISION WITH PADDLE 1')
 			ball._paddle_collision()
+			sounds.play_sound_paddle_hit_one()
 
 		# paddle2 collision
 		if collision._between_ball_and_paddle2(ball, paddle2):
 			print('COLLISION WITH PADDLE 2')
 			ball._paddle_collision()
+			sounds.play_sound_paddle_hit_two()
 
 		# GOAL OF PLAYER 1 !
 		if collision._between_ball_and_goal2(ball):
 			_draw_board()
 			score1.increase()
+			sounds.play_sound_score()
 			ball._restart_pos()
 			paddle1._restart_pos()
 			paddle2._restart_pos()
@@ -127,6 +152,7 @@ while True:
 		if collision._between_ball_and_goal1(ball):
 			_draw_board()
 			score2.increase()
+			sounds.play_sound_score()
 			ball._restart_pos()
 			paddle1._restart_pos()
 			paddle2._restart_pos()

@@ -3,7 +3,7 @@ from constants import *
 from actor import Actor
 
 class Ball (Actor):
-    """A solid, spherical object that moves around in the game."""
+    #A solid, spherical object that moves around in the game.
     def __init__(self, screen, color, posX, posY, radius):
         self.screen = screen
         self.color = color
@@ -16,7 +16,7 @@ class Ball (Actor):
 	
 		
     def _draw(self):
-	"""Method to draw a ball"""
+	#Method to draw a ball
         pygame.draw.circle( self.screen, self.color, (self.posX, self.posY), self.radius )
 
     def _start(self):
@@ -25,7 +25,7 @@ class Ball (Actor):
         self.dy = 5
 
     def _move(self):
-	"""Moves the ball"""
+	    #Moves the ball
         self.posX += self.dx
         self.posY += self.dy
 
@@ -36,7 +36,7 @@ class Ball (Actor):
         self.dx = -self.dx
 
     def _restart_pos(self):
-	"""Restart ball to the default position"""
+	    #Restart ball to the default position
         self.posX = WIDTH//2
         self.posY = HEIGHT//2
         self.dx = 0
