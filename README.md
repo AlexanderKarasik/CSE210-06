@@ -28,9 +28,9 @@ pygame 1.9.3 (To install pygame run this in terminal/command prompt $ pip instal
 
 ## Music Documentation
 Music from PlayOnLoop.com
-Licensed under Creative Commons by Attribution 4.0
+and have been licensed under Creative Commons by Attribution 4.0
 https://creativecommons.org/licenses/by/4.0/
 
 Sound Effects from mixkit.co
-Licensed under the MixkitSound Effects Free License
+and have been licensed under the MixkitSound Effects Free License
 https://mixkit.co/license/#sfxFree
