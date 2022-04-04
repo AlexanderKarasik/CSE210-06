@@ -45,7 +45,7 @@ class Sounds:
         print(content)
         file.close()
     def play_sound_score(self):
-        pygame.mixer.sound.play(play_sound_score)
+        pygame.mixer.Sound.play(pygame.mixer.Sound("score.wav"))
 
     # Command that will print off the documentation.
     # The documentation must be printed due to legal reasons.
