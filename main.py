@@ -12,7 +12,7 @@ pygame.init()
 screen = pygame.display.set_mode( (WIDTH, HEIGHT) )
 screen.fill(BLUE)
 pygame.draw.line (screen, WHITE, (WIDTH//2, 0), (WIDTH//2, HEIGHT), 5 )
-pygame.display.set_caption('PONG GAME')
+pygame.display.set_caption('PONG GAME (Press "Enter" to start)')
 
 
 def _draw_board():
