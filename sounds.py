@@ -10,7 +10,7 @@ class Sounds:
     def store_sounds(self):
         # Sounds
         sound_paddle_hit_one=pygame.mixer.Sound("paddle_hit_one.wav")
-        sound_paddle_hit_two=pygame.mixer.Sound("paddle_hit_two.wav")
+        sound_paddle_hit_two = pygame.mixer.Sound("paddle_hit_two.wav")
         sound_score=pygame.mixer.Sound("score.wav")
         
         # Background Music
@@ -29,11 +29,21 @@ class Sounds:
 
     # Commands to play certain sounds from memory.
     def play_sound_paddle_hit_one(self):
-        pygame.mixer.sound.play(sound_paddle_hit_one)
+        pygame.mixer.Sound.play(pygame.mixer.Sound("paddle_hit_one.wav"))
 
     def play_sound_paddle_hit_two(self):
-        pygame.mixer.sound.play(sound_paddle_hit_two)
+        pygame.mixer.Sound.play(pygame.mixer.Sound("paddle_hit_two.wav"))
 
+    def play_sound_score(self):
+        pygame.mixer.Sound.play(pygame.mixer.Sound("score.wav"))
+
+    # Command that will print off the documentation.
+    # The documentation must be printed due to legal reasons.
+    def print_documentation(self):
+        file=open("Music and Sound Effects Documentation.txt")
+        content=file.read()
+        print(content)
+        file.close()
     def play_sound_score(self):
         pygame.mixer.sound.play(play_sound_score)
 
